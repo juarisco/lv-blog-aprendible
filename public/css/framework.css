@@ -1,0 +1,144 @@
+.container{
+	padding-right: 15px;
+  	padding-left: 15px;
+  	margin-right: auto;
+  	margin-left: auto;
+}
+@media (max-width: 480px) {
+  .no-mobile{
+  display: none !important;
+}
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 900px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 930px;
+  }
+  .no-desktop{
+  	display: none !important; 
+  }
+}
+.container-fluid{
+	padding-right: 15px;
+  	padding-left: 15px;
+  	margin-right: auto;
+  	margin-left: auto;
+}
+.container-flex{
+	display: flex;
+	flex-wrap: wrap;
+}
+.space-between{
+	justify-content: space-between;
+}
+.space-around{
+	justify-content: space-around;
+}
+.divider{
+	border-top:2px solid #eeeeee;
+}
+.divider-2{
+	border-top:2px solid #000;
+	opacity: 0.1;
+}
+.space-center{
+	justify-content: center;
+}
+.container-inline-flex{
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.block-left{
+	float: left!important;
+}
+.block-right{
+	float: right!important;
+}
+.text-left{
+	text-align: left;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+.text-uppercase{
+	text-transform: uppercase;
+}
+.text-capitalize{
+	text-transform: capitalize;
+}
+.center-block{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.clearfix{
+	clear: both;
+}
+
+.c-gris{
+	color: #bdbdbd;
+}
+.c-gris-2{
+	color: #333333;
+}
+.c-green{
+	color: #1abc9c;
+}
+.c-white{
+	color: #fff;
+}
+.c-negro{
+	color: #000;
+}
+.list-unstyled{
+	padding-left: 0;
+    list-style: none;
+}
+
+.img-responsive{
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.space-inter{
+	padding: 35px 5px;
+}
+.margin-25{
+	margin:25px 0;
+}
+.padding-20{
+	padding: 20px 0;
+}
+.active{
+	color: #bdbdbd;
+	border-bottom: 0 !important;
+}
+.pagination-active{
+	background: #1abc9c !important;
+	color: #fff !important;
+}
+.hover{
+	border-bottom: 2px solid #1abc9c;
+	padding-bottom: 5px;
+}
+
