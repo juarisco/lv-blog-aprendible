@@ -3,7 +3,7 @@
 @section('content')
     <section class="posts container">
 
-        @foreach ($posts->take(3) as $post)
+        @foreach ($posts as $post)
             <article class="post no-image">
                 <div class="content-post">
                     <header class="container-flex space-between">
