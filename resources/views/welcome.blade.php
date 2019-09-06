@@ -3,12 +3,12 @@
 @section('content')
     <section class="posts container">
 
-        @foreach ($posts as $post)
+        @foreach ($posts->take(3) as $post)
             <article class="post no-image">
                 <div class="content-post">
                     <header class="container-flex space-between">
                         <div class="date">
-                            <span class="c-gray-1">{{ $post->published_at }}</span>
+                            <span class="c-gray-1">{{ $post->published_at->format('M d') }}</span>
                         </div>
                         <div class="post-category">
                             <span class="category text-capitalize">i do travel</span>
