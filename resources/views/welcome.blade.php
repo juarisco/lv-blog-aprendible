@@ -11,7 +11,7 @@
                             <span class="c-gray-1">{{ $post->published_at->format('M d') }}</span>
                         </div>
                         <div class="post-category">
-                            <span class="category text-capitalize">i do travel</span>
+                            <span class="category text-capitalize">{{ $post->category->name }}</span>
                         </div>
                     </header>
                     <h1>{{ $post->title }}.</h1>
