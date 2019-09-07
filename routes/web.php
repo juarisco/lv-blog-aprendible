@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('admin', function () {
     return view('admin.dashboard');
 });
+
+// Route::auth();
+// Auth::routes();
+Auth::routes(['register' => false]);
