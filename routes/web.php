@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('welcome')->withPosts($posts);
 });
 
-Route::get('admin', function () {
+Route::get('home', function () {
     return view('admin.dashboard');
-});
+})->middleware('auth');
 
 // Route::auth();
 // Auth::routes();

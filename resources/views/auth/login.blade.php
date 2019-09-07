@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>{{ config('app.name') }}LTE 2 | Log in</title>
   <link rel="shortcut icon" href="#">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -32,38 +32,39 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/"><b>Admin</b>LTE</a>
+    <a href="/"><b>{{ config('app.name') }}</b>LTE</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    {{-- <p class="login-box-msg">{{ __('Sign in to start your session') }}</p> --}}
+    <p class="login-box-msg">@lang('Sign in to start your session')</p>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-      <div class="form-group has-feedback">
+      <div class="form-group @error('email') has-error @enderror has-feedback">
         <input type="email" 
-            class="form-control @error('email') is-invalid @enderror" 
+            class="form-control" 
             placeholder="Email" 
             name="email" 
             value="{{ old('email') }}" 
             required autofocus>
 
         @error('email')
-            <span class="invalid-feedback" role="alert">
+            <span class="help-block" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('password') has-error @enderror has-feedback">
         <input type="password" 
-            class="form-control @error('password') is-invalid @enderror" 
-            placeholder="Password" 
+            class="form-control" 
+            placeholder="{{ __('Password') }}" 
             name="password" 
             required>
 
         @error('password')
-        <span class="invalid-feedback" role="alert">
+        <span class="help-block" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror  
@@ -73,13 +74,13 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('Login') }}</button>
         </div>
         <!-- /.col -->
       </div>
@@ -94,7 +95,7 @@
     </div> --}}
     <!-- /.social-auth-links -->
 
-    <a href="{{ route('password.request') }}">I forgot my password</a><br>
+    <a href="{{ route('password.request') }}">{{ __('Reset Password') }}</a><br>
     {{-- <a href="register.html" class="text-center">Register a new membership</a> --}}
 
   </div>
