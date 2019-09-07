@@ -11,15 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    $posts = \App\Post::latest('published_at')->get();
-    return view('welcome')->withPosts($posts);
-});
+Route::get('/', 'PagesController@home');
 
-Route::get('home', function () {
-    return view('admin.dashboard');
-})->middleware('auth');
+Route::get('home', 'HomeController@index');
 
-// Route::auth();
-// Auth::routes();
+Route::group(
+    [
+        'prefix' => 'admin',
+        'namespace' => 'Admin',
+        'middleware' => 'auth'
+    ],
+    function () {
+        // Rutas de administración
+        Route::get('posts', 'PostsController@index');
+    }
+);
+
 Auth::routes(['register' => false]);
