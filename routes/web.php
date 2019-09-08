@@ -13,8 +13,6 @@
 
 Route::get('/', 'PagesController@home');
 
-Route::get('home', 'HomeController@index');
-
 Route::group(
     [
         'prefix' => 'admin',
@@ -23,6 +21,7 @@ Route::group(
     ],
     function () {
         // Rutas de administración
+        Route::get('/', 'AdminController@index')->name('dashboard');
         Route::get('posts', 'PostsController@index')->name('admin.posts.index');
     }
 );
