@@ -23,7 +23,7 @@ Route::group(
     ],
     function () {
         // Rutas de administración
-        Route::get('posts', 'PostsController@index');
+        Route::get('posts', 'PostsController@index')->name('admin.posts.index');
     }
 );
 

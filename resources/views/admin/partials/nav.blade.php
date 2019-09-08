@@ -9,7 +9,7 @@
           </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#">@lang('View all posts')</a></li>
+        <li><a href="{{ route('admin.posts.index') }}">@lang('View all posts')</a></li>
         <li><a href="#">@lang('Create new post')</a></li>
       </ul>
     </li>
