@@ -2,11 +2,11 @@
 
 @section('header')
     <h1>
-        @lang('All Posts')
+        @lang('Posts')
         <small>@lang('Posts List')</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> @lang('Home')</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> @lang('Home')</a></li>
         <li class="active">@lang('Posts')</li>
     </ol>
 @endsection
