@@ -26,7 +26,7 @@
 
                     <div class="form-group">
                       <label for="body">@lang('Content Post')</label>
-                      <textarea class="form-control" name="body" id="body" rows="10" placeholder="{{ __('Enter full content post') }}"></textarea>
+                      <textarea class="form-control" name="body" id="editor" rows="10" placeholder="{{ __('Enter full content post') }}"></textarea>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,21 @@
                         @endforeach
                       </select>
                     </div>
-                    
+
+                    <div class="form-group">
+                        <label for="tags">@lang('Tags')</label>
+                        <select class="form-control select2" 
+                                multiple="multiple" 
+                                data-placeholder="{{ __('Select one o more tags') }}"
+                                style="width: 100%;">
+
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                       
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="excerpt">@lang('Excerpt Post')</label>
                         <textarea class="form-control" name="excerpt" id="excerpt" rows="3" placeholder="{{ __('Enter an excert from the post') }}"></textarea>
@@ -73,18 +87,35 @@
 @endsection
 
 @push('styles')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/adminlte/bower_components/select2/dist/css/select2.min.css">
+
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 @endpush
 
 @push('scripts')
+    <!-- CK Editor -->
+    <script src="/adminlte/bower_components/ckeditor/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> --}}
+
+    <!-- Select2 -->
+    <script src="/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
+
     <!-- bootstrap datepicker -->
     <script src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script>
         //Date picker
         $('#datepicker').datepicker({
           autoclose: true
-        })
+        });
+
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    
+        // Replace the <textarea id="editor"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor')
     </script>
 @endpush
 

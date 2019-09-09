@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Tag;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
@@ -29,8 +30,11 @@ class PostsController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('admin.posts.create')->withCategories($categories);
+        return view('admin.posts.create')
+            ->withCategories($categories)
+            ->withTags($tags);
     }
 
     /**
