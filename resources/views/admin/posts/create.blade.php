@@ -14,14 +14,15 @@
 
 @section('content')
 <div class="row">
-    <form action="">
+    <form action="{{ route('admin.posts.store') }}" method="POST">
+        @csrf
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="form-group">
                     <label for="title">@lang('Post Title')</label>
                     <input type="text"
-                        class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="{{ __('Enter here post title') }}">
+                        class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="{{ __('Enter here post title') }}" autofocus>
                     </div>
 
                     <div class="form-group">
@@ -47,8 +48,8 @@
                     </div>
                     
                     <div class="form-group">
-                      <label for="category_id">@lang('Categories')</label>
-                      <select class="form-control" name="category_id" id="category_id">
+                      <label for="category">@lang('Categories')</label>
+                      <select class="form-control" name="category" id="category">
                         <option value="">@lang('Select category')</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -58,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="tags">@lang('Tags')</label>
-                        <select class="form-control select2" 
+                        <select name="tags[]" class="form-control select2" 
                                 multiple="multiple" 
                                 data-placeholder="{{ __('Select one o more tags') }}"
                                 style="width: 100%;">
@@ -76,7 +77,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-block">@lang('Save Post')</button>
+                        <button type="submit" class="btn btn-primary btn-block">@lang('Save Post')</button>
                     </div>
                 </div>
             </div>

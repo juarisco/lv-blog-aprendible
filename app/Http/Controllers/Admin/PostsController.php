@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Tag;
 use App\Post;
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,7 +46,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return Post::create($request->all());
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->published_at = Carbon::parse($request->published_at);
+        $post->category_id = $request->category;
+        $post->save();
+
+        $post->tags()->attach($request->tags);
+
+        return back()->with('flash', __('Post succesfully created'));
     }
 
     /**
