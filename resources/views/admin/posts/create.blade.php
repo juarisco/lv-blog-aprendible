@@ -19,15 +19,38 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-body">
-                    <div class="form-group">
-                    <label for="title">@lang('Post Title')</label>
-                    <input type="text"
-                        class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="{{ __('Enter here post title') }}" autofocus>
+                    <div class="form-group @error('title') has-error @enderror">
+                        <label for="title">@lang('Post Title')</label>
+                        <input type="text"
+                            class="form-control" 
+                            name="title" 
+                            id="title" 
+                            value="{{ old('title') }}"
+                            placeholder="{{ __('Enter here post title') }}" autofocus>
+                        
+                        @error('title')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror                        
                     </div>
 
-                    <div class="form-group">
-                      <label for="body">@lang('Content Post')</label>
-                      <textarea class="form-control" name="body" id="editor" rows="10" placeholder="{{ __('Enter full content post') }}"></textarea>
+                    <div class="form-group @error('body') has-error @enderror">
+                        <label for="body">@lang('Content Post')</label>
+                        <textarea class="form-control" 
+                        name="body" 
+                        id="editor" 
+                        rows="10" 
+                        placeholder="{{ __('Enter full content post') }}">
+                        {{ old('body') }}
+                    </textarea>
+
+                        @error('title')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror                        
+
                     </div>
                 </div>
             </div>
@@ -43,21 +66,34 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input name="published_at" type="text" class="form-control pull-right" id="datepicker">
+                            <input name="published_at" 
+                                type="text" 
+                                class="form-control pull-right" 
+                                value="{{ old('published_at') }}"
+                                id="datepicker">
                         </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group @error('category') has-error @enderror">
                       <label for="category">@lang('Categories')</label>
                       <select class="form-control" name="category" id="category">
                         <option value="">@lang('Select category')</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+                                {{ old('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
                       </select>
+
+                      @error('category')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                      @enderror  
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @error('tags') has-error @enderror">
                         <label for="tags">@lang('Tags')</label>
                         <select name="tags[]" class="form-control select2" 
                                 multiple="multiple" 
@@ -65,19 +101,42 @@
                                 style="width: 100%;">
 
                             @foreach ($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                <option {{ collect(old('tags'))->contains($tag->id) ? 'selected' : '' }} 
+                                    value="{{ $tag->id }}">
+                                    {{ $tag->name }}
+                                </option>
                             @endforeach
                        
                         </select>
+
+                        @error('tags')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror  
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @error('excerpt') has-error @enderror">
                         <label for="excerpt">@lang('Excerpt Post')</label>
-                        <textarea class="form-control" name="excerpt" id="excerpt" rows="3" placeholder="{{ __('Enter an excert from the post') }}"></textarea>
+                        <textarea class="form-control" 
+                            name="excerpt" 
+                            id="excerpt" 
+                            rows="3" 
+                            placeholder="{{ __('Enter an excert from the post') }}">
+                            {{ old('excerpt') }}
+                        </textarea>
+                        
+                        @error('excerpt')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror  
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">@lang('Save Post')</button>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            @lang('Save Post')
+                        </button>
                     </div>
                 </div>
             </div>
