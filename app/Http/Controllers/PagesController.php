@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::latest('published_at')->get();
+        $posts = Post::published()->get();
 
         return view('welcome')->withPosts($posts);
     }
