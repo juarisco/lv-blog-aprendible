@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('meta-title', $post->title)
+@section('meta-description', $post->excerpt)
+
 @section('content')
     <article class="post image-w-text container">
         <div class="content-post">
