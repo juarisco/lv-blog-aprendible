@@ -38,35 +38,49 @@ class PostsController extends Controller
             ->withTags($tags);
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $post = Post::create([
+            'title' => $request->title,
+            'url' => str_slug($request->title)
+        ]);
+
+        return redirect()->route('admin.posts.edit', $post);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'category' => 'required',
-            'tags' => 'required',
-            'excerpt' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'title' => 'required',
+    //         'body' => 'required',
+    //         'category' => 'required',
+    //         'tags' => 'required',
+    //         'excerpt' => 'required',
+    //     ]);
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->url = str_slug($request->title);
-        $post->body = $request->body;
-        $post->excerpt = $request->excerpt;
-        $post->published_at = $request->filled('published_at') ? Carbon::parse($request->published_at) : null;
-        $post->category_id = $request->category;
-        $post->save();
+    //     $post = new Post;
+    //     $post->title = $request->title;
+    //     $post->url = str_slug($request->title);
+    //     $post->body = $request->body;
+    //     $post->excerpt = $request->excerpt;
+    //     $post->published_at = $request->filled('published_at') ? Carbon::parse($request->published_at) : null;
+    //     $post->category_id = $request->category;
+    //     $post->save();
 
-        $post->tags()->attach($request->tags);
+    //     $post->tags()->attach($request->tags);
 
-        return back()->with('flash', __('Post succesfully created'));
-    }
+    //     return back()->with('flash', __('Post succesfully created'));
+    // }
 
     /**
      * Display the specified resource.
@@ -85,9 +99,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit')->withPost($post);
     }
 
     /**
