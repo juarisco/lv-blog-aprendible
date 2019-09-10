@@ -28,15 +28,15 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $categories = Category::all();
-        $tags = Tag::all();
+    // public function create()
+    // {
+    //     $categories = Category::all();
+    //     $tags = Tag::all();
 
-        return view('admin.posts.create')
-            ->withCategories($categories)
-            ->withTags($tags);
-    }
+    //     return view('admin.posts.create')
+    //         ->withCategories($categories)
+    //         ->withTags($tags);
+    // }
 
     public function store(Request $request)
     {
@@ -58,29 +58,28 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'title' => 'required',
-    //         'body' => 'required',
-    //         'category' => 'required',
-    //         'tags' => 'required',
-    //         'excerpt' => 'required',
-    //     ]);
+    public function update(Post $post, Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'category' => 'required',
+            'tags' => 'required',
+            'excerpt' => 'required',
+        ]);
 
-    //     $post = new Post;
-    //     $post->title = $request->title;
-    //     $post->url = str_slug($request->title);
-    //     $post->body = $request->body;
-    //     $post->excerpt = $request->excerpt;
-    //     $post->published_at = $request->filled('published_at') ? Carbon::parse($request->published_at) : null;
-    //     $post->category_id = $request->category;
-    //     $post->save();
+        $post->title = $request->title;
+        $post->url = str_slug($request->title);
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->published_at = $request->filled('published_at') ? Carbon::parse($request->published_at) : null;
+        $post->category_id = $request->category;
+        $post->save();
 
-    //     $post->tags()->attach($request->tags);
+        $post->tags()->sync($request->tags);
 
-    //     return back()->with('flash', __('Post succesfully created'));
-    // }
+        return back()->with('flash', __('Post succesfully saved'));
+    }
 
     /**
      * Display the specified resource.
@@ -101,7 +100,13 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit')->withPost($post);
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('admin.posts.edit')
+            ->withCategories($categories)
+            ->withTags($tags)
+            ->withPost($post);
     }
 
     /**
@@ -111,10 +116,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    // public function update(Request $request, Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

@@ -88,7 +88,7 @@
     </script>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+{{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <form action="{{ route('admin.posts.store') }}" method="POST">
         @csrf    
         <div class="modal-dialog" role="document">
@@ -99,7 +99,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group @error('title') has-error @enderror">
-                        {{-- <label for="title">@lang('Post Title')</label> --}}
                         <input type="text"
                             class="form-control" 
                             name="title" 
@@ -121,5 +120,5 @@
             </div>
         </div>
     </form>    
-</div>    
+</div>     --}}
 @endpush

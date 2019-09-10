@@ -391,5 +391,7 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. -->
 
+@include('admin.posts.create')     
+
 </body>
 </html>
