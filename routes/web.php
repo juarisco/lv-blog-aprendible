@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('blog/{id}', 'PostsController@show');
+Route::get('blog/{post}', 'PostsController@show');
 
 Route::group(
     [

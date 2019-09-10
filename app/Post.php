@@ -11,6 +11,11 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
+
     /**
      * Get the category that owns the post.
      *
