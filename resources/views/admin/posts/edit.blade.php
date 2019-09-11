@@ -135,6 +135,12 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="dropzone">
+                            {{-- <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId"> --}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">
                             @lang('Save Post')
                         </button>
@@ -148,6 +154,9 @@
 @endsection
 
 @push('styles')
+    <!-- dropzone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
+
     <!-- Select2 -->
     <link rel="stylesheet" href="/adminlte/bower_components/select2/dist/css/select2.min.css">
 
@@ -156,6 +165,9 @@
 @endpush
 
 @push('scripts')
+    <!-- dropzone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
     <!-- CK Editor -->
     <script src="/adminlte/bower_components/ckeditor/ckeditor.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> --}}
@@ -177,6 +189,17 @@
         // Replace the <textarea id="editor"> with a CKEditor
         // instance, using default configuration.
         CKEDITOR.replace('editor')
+            
+        // dropzone
+        new Dropzone('.dropzone',{
+            url: "/admin/posts/{{ $post->url }}/photos",
+            headers:{
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            dictDefaultMessage: '{{ __("Drop files here to upload") }}'
+        });
+
+        Dropzone.autoDiscover = false;
     </script>
 @endpush
 

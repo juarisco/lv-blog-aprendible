@@ -15,7 +15,7 @@
                             name="title" 
                             id="title" 
                             value="{{ old('title') }}"
-                            placeholder="{{ __('Enter here post title') }}" autofocus>
+                            placeholder="{{ __('Enter here post title') }}" required>
                         
                         @error('title')
                             <span class="help-block" role="alert">

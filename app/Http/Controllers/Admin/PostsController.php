@@ -78,7 +78,7 @@ class PostsController extends Controller
 
         $post->tags()->sync($request->tags);
 
-        return back()->with('flash', __('Post succesfully saved'));
+        return redirect()->route('admin.posts.edit', $post)->with('flash', __('Post succesfully saved'));
     }
 
     /**
