@@ -123,8 +123,8 @@
                             name="excerpt" 
                             id="excerpt" 
                             rows="3" 
-                            data-placeholder="{{ __('Enter an excerpt from the post') }}">
-                            {{ old('excerpt', $post->excerpt) }}
+                            placeholder="{{ __('Enter an excerpt from the post') }}">
+                        {{ old('excerpt', $post->excerpt) }}
                         </textarea>
                         
                         @error('excerpt')
@@ -135,9 +135,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="dropzone">
-                            {{-- <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId"> --}}
-                        </div>
+                        <div class="dropzone"></div>
                     </div>
 
                     <div class="form-group">
@@ -184,19 +182,27 @@
         });
 
         //Initialize Select2 Elements
-        $('.select2').select2()
+        $('.select2').select2();
     
         // Replace the <textarea id="editor"> with a CKEditor
         // instance, using default configuration.
-        CKEDITOR.replace('editor')
+        CKEDITOR.replace('editor');
             
         // dropzone
-        new Dropzone('.dropzone',{
+        var myDropzone = new Dropzone('.dropzone',{
             url: "/admin/posts/{{ $post->url }}/photos",
+            paramName: 'photo',
+            acceptedFiles: 'image/*',
+            maxFilesize: 2,
             headers:{
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             dictDefaultMessage: '{{ __("Drop files here to upload") }}'
+        });
+
+        myDropzone.on('error', function (file, res) {
+            var msg = res.errors.photo[0];
+            $('.dz-error-message:last > span').text(msg);
         });
 
         Dropzone.autoDiscover = false;
