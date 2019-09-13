@@ -39,12 +39,12 @@
                     <div class="form-group @error('body') has-error @enderror">
                         <label for="body">@lang('Content Post')</label>
                         <textarea class="form-control" 
-                        name="body" 
-                        id="editor" 
-                        rows="10" 
-                        placeholder="{{ __('Enter full content post') }}">
-                        {{ old('body', $post->body) }}
-                    </textarea>
+                            name="body" 
+                            id="editor" 
+                            rows="10" 
+                            placeholder="{{ __('Enter full content post') }}">
+                            {{ old('body', $post->body) }}
+                        </textarea>
 
                         @error('body')
                             <span class="help-block" role="alert">
@@ -53,6 +53,8 @@
                         @enderror                        
 
                     </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -147,6 +149,25 @@
             </div>
         </div>
     </form>
+    <div class="col-md-8">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    @foreach ($post->photos as $photo)
+                        <form action="{{ route('admin.photos.destroy', $photo) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <div class="col-md-2">
+                                <button class="btn btn-danger btn-xs" style="position: absolute">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                                    <img class="img-responsive" src="{{ url($photo->url) }}" alt="">
+                                </div>
+                        </form>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
@@ -187,6 +208,7 @@
         // Replace the <textarea id="editor"> with a CKEditor
         // instance, using default configuration.
         CKEDITOR.replace('editor');
+        CKEDITOR.config.height = 270;
             
         // dropzone
         var myDropzone = new Dropzone('.dropzone',{
