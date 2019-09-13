@@ -75,6 +75,23 @@
 
                     </div>
 
+                    <div class="form-group @error('iframe') has-error @enderror">
+                        <label for="iframe">@lang('Embeded Content (iframe)')</label>
+                        <textarea class="form-control" 
+                            name="iframe" 
+                            rows="2" 
+                            placeholder="{{ __('Enter Embeded Content audio or video') }}">
+                            {{ old('iframe', $post->iframe) }}
+                        </textarea>
+
+                        @error('iframe')
+                            <span class="help-block" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror                        
+
+                    </div>
+
                     
                 </div>
             </div>
@@ -211,7 +228,7 @@
         // Replace the <textarea id="editor"> with a CKEditor
         // instance, using default configuration.
         CKEDITOR.replace('editor');
-        CKEDITOR.config.height = 270;
+        // CKEDITOR.config.height = 270;
             
         // dropzone
         var myDropzone = new Dropzone('.dropzone',{
