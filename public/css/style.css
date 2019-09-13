@@ -80,7 +80,7 @@ header nav li a:hover{
 }
 .masonry .gallery-image {
     display: inline-block;
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 20px;
     padding: 4px;
     border: 1px solid #000;
@@ -296,4 +296,8 @@ a.btn-bar{
 
 .gallery-photos {
 	overflow: hidden;
+}
+
+.carousel-inner .item img{
+	width: 100%;
 }
