@@ -79,6 +79,7 @@
                         <label for="iframe">@lang('Embeded Content (iframe)')</label>
                         <textarea class="form-control" 
                             name="iframe" 
+                            id="iframe" 
                             rows="2" 
                             placeholder="{{ __('Enter Embeded Content audio or video') }}">
                             {{ old('iframe', $post->iframe) }}
@@ -92,7 +93,6 @@
 
                     </div>
 
-                    
                 </div>
             </div>
         </div>
@@ -208,8 +208,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
     <!-- CK Editor -->
-    <script src="/adminlte/bower_components/ckeditor/ckeditor.js"></script>
-    {{-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> --}}
+    {{-- <script src="/adminlte/bower_components/ckeditor/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 
     <!-- Select2 -->
     <script src="/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
