@@ -2,8 +2,8 @@
 
 @section('content')
 <section class="posts container">
-        @if (isset($category))
-            <h3>@lang('Categories Post') {{ $category->name }}</h3>
+        @if (isset($title))
+            <h3>{{ $title }}</h3>
         @endif
 
         @foreach ($posts as $post)
@@ -48,7 +48,9 @@
                         </div>
                         <div class="tags container-flex">
                             @foreach ($post->tags as $tag)
-                                <span class="tag c-gris text-capitalize">#{{ $tag->name }}</span>
+                                <span class="tag c-gris text-capitalize">
+                                    <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
+                                </span>
                             @endforeach
                         </div>
                     </footer>
