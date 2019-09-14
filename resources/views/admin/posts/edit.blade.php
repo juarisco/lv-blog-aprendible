@@ -117,7 +117,7 @@
                     
                     <div class="form-group @error('category') has-error @enderror">
                       <label for="category">@lang('Categories')</label>
-                      <select class="form-control" name="category" id="category">
+                      <select class="form-control select2" name="category" id="category">
                         <option value="">@lang('Select category')</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
@@ -223,7 +223,9 @@
         });
 
         //Initialize Select2 Elements
-        $('.select2').select2();
+        $('.select2').select2({
+            tags: true
+        });
     
         // Replace the <textarea id="editor"> with a CKEditor
         // instance, using default configuration.
