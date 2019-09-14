@@ -43,6 +43,10 @@ header nav li a:hover{
     top: 30px;
     text-transform: capitalize;
 }
+.post .category a{
+	color: inherit;
+	font-size: inherit;
+}
 .post figure{
 	margin:0;
 }

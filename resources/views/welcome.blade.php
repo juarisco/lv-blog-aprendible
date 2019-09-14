@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('content')
-    <section class="posts container">
+<section class="posts container">
+        @if (isset($category))
+            <h3>@lang('Categories Post') {{ $category->name }}</h3>
+        @endif
 
         @foreach ($posts as $post)
             <article class="post">
@@ -31,7 +34,9 @@
                             <span class="c-gris">{{ $post->published_at->format('M d') }}</span>
                         </div>
                         <div class="post-category">
-                            <span class="category text-capitalize">{{ $post->category->name }}</span>
+                            <span class="category text-capitalize">
+                                <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>
+                            </span>
                         </div>
                     </header>
                     <h1>{{ $post->title }}.</h1>
@@ -54,13 +59,6 @@
     </section><!-- fin del div.posts.container -->
 
     {{ $posts->links() }}
-    {{-- <div class="pagination">
-        <ul class="list-unstyled container-flex space-center">
-            <li><a href="#" class="pagination-active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-        </ul>
-    </div> --}}
 
 @endsection
 
