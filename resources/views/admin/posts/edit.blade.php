@@ -115,19 +115,19 @@
                         </div>
                     </div>
                     
-                    <div class="form-group @error('category') has-error @enderror">
-                      <label for="category">@lang('Categories')</label>
-                      <select class="form-control select2" name="category" id="category">
+                    <div class="form-group @error('category_id') has-error @enderror">
+                      <label for="category_id">@lang('Categories')</label>
+                      <select class="form-control select2" name="category_id" id="category_id">
                         <option value="">@lang('Select category')</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ old('category', $post->category_id) == $category->id ? 'selected' : '' }}>
+                                {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
                       </select>
 
-                      @error('category')
+                      @error('category_id')
                             <span class="help-block" role="alert">
                                 {{ $message }}
                             </span>
