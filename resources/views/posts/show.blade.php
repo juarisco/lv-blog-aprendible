@@ -55,7 +55,7 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="/css/twitter-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/twitter-bootstrap.css">
 @endpush
 
 @push('scripts')

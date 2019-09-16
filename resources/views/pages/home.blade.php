@@ -44,7 +44,7 @@
                     <p>{{ $post->excerpt }}.</p>
                     <footer class="container-flex space-between">
                         <div class="read-more">
-                            <a href="blog/{{ $post->url }}" class="text-uppercase c-green">@lang('read more')</a>
+                            <a href="/blog/{{ $post->url }}" class="text-uppercase c-green">@lang('read more')</a>
                         </div>
                         <div class="tags container-flex">
                             @foreach ($post->tags as $tag)
