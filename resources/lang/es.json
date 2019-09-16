@@ -1,4 +1,8 @@
 {
+  "home": "Inicio",
+  "about": "Nosotros",
+  "archive": "Arvhivo",
+  "contact": "Contacto",
   "HEADER": "Navegación",
   "Blog": "Blog",
   "View all posts": "Ver todos los posts",

@@ -11,6 +11,21 @@ class PagesController extends Controller
     {
         $posts = Post::published()->paginate();
 
-        return view('welcome')->withPosts($posts);
+        return view('pages.home')->withPosts($posts);
+    }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    public function archive()
+    {
+        return view('pages.archive');
+    }
+
+    public function contact()
+    {
+        return view('pages.contact');
     }
 }
