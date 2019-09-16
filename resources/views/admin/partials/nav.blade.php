@@ -17,7 +17,15 @@
           <a href="{{ route('admin.posts.index') }}"><i class="fa fa-eye"></i> @lang('View all posts')</a>
         </li>
         <li>
-          <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i> @lang('Create new post')</a>
+          @if (request()->is('admin/posts/*'))
+            <a href="{{ route('admin.posts.index', '#create') }}">
+              <i class="fa fa-pencil"></i> @lang('Create new post')
+            </a>
+          @else
+            <a href="#" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-pencil"></i> @lang('Create new post')
+            </a>
+          @endif
         </li>
       </ul>
     </li>
