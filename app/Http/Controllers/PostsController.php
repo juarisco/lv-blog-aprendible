@@ -9,6 +9,10 @@ class PostsController extends Controller
 {
     public function show(Post $post)
     {
-        return view('posts.show')->withPost($post);
+        if ($post->isPublished() || auth()->check()) {
+            return view('posts.show')->withPost($post);
+        }
+
+        abort(404);
     }
 }
