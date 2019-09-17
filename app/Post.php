@@ -14,6 +14,7 @@ class Post extends Model
         'excerpt',
         'published_at',
         'category_id',
+        'user_id'
     ];
 
     protected $dates = ['published_at'];
@@ -51,6 +52,11 @@ class Post extends Model
     public function photos()
     {
         return $this->hasMany(Photo::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
