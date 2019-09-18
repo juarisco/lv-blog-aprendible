@@ -19,37 +19,20 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = auth()->user()->posts;
 
         return view('admin.posts.index')->withPosts($posts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-
-    //     return view('admin.posts.create')
-    //         ->withCategories($categories)
-    //         ->withTags($tags);
-    // }
-
     public function store(Request $request)
     {
+        $this->authorize('create', new Post);
+
         $this->validate($request, [
             'title' => 'required|min:3'
         ]);
 
-        // $post = Post::create($request->only('title'));
-        $post = Post::create([
-            'title' => $request->title,
-            'user_id' => auth()->user()->id
-        ]);
+        $post = Post::create($request->all());
 
         return redirect()->route('admin.posts.edit', $post);
     }
@@ -62,22 +45,13 @@ class PostsController extends Controller
      */
     public function update(Post $post, StorePostRequest $request)
     {
+        $this->authorize('update', $post);
+
         $post->update($request->all());
 
         $post->syncTags($request->tags);
 
         return redirect()->route('admin.posts.edit', $post)->with('flash', __('Post succesfully saved'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -88,26 +62,14 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        $tags = Tag::all();
+        $this->authorize('view', $post);
 
-        return view('admin.posts.edit')
-            ->withCategories($categories)
-            ->withTags($tags)
-            ->withPost($post);
+        return view('admin.posts.edit', [
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+            'post' => $post
+        ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(Request $request, Post $post)
-    // {
-    //     //
-    // }
 
     /**
      * Remove the specified resource from storage.
@@ -117,6 +79,8 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return redirect()
