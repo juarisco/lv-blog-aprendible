@@ -19,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = auth()->user()->posts;
+        $posts = Post::allowed()->get();
 
         return view('admin.posts.index')->withPosts($posts);
     }
