@@ -122,4 +122,17 @@ class Post extends Model
 
         return $this->tags()->sync($tagIds);
     }
+
+    public function viewType($home = '')
+    {
+        if ($this->photos->count() === 1) :
+            return 'posts.photo';
+        elseif ($this->photos->count() > 1) :
+            return $home === 'home' ? 'posts.carousel-preview' : 'posts.carousel';
+        elseif ($this->iframe) :
+            return 'posts.iframe';
+        else :
+            return 'posts.text';
+        endif;
+    }
 }
