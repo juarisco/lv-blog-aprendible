@@ -30,6 +30,17 @@
                           <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}">
                         </div>
 
+                        <div class="form-group">
+                          <label for="password">@lang('Password')</label>
+                          <input type="password" name="password" id="password" class="form-control" placeholder="@lang('Password')" autocomplete="new-password">
+                          <span class="hekp-block">@lang('Left blank if you are not gonna change your password')</span>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password-confirm">@lang('Confirm Password')</label>
+                          <input type="password" name="password_confirmation" id="password-confirm" class="form-control" placeholder="@lang('Confirm Password')" autocomplete="new-password">
+                        </div>
+
                         <button class="btn btn-primary btn-block">@lang('Update user')</button>
                     </form>
                 </div>
