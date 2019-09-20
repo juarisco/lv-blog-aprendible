@@ -46,5 +46,31 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@lang('Roles and Permissions')</h3>
+                </div>
+                <div class="box-body">
+                    <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
+                        @csrf @method('PUT')
+
+                        @foreach ($roles as $id => $name)
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="roles[]" id="roles" value="{{ $id }}" 
+                                        {{ $user->roles->contains($id) ? 'checked' : '' }}>
+                                    {{ $name }}
+                                </label>
+                            </div>
+                            <p></p>
+                        @endforeach
+
+                        <button class="btn btn-primary btn-block">@lang('Update Roles')</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
