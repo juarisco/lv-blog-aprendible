@@ -56,17 +56,7 @@
                     <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
                         @csrf @method('PUT')
 
-                        @foreach ($roles as $role)
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="roles[]" id="roles" value="{{ $role->id }}" 
-                                        {{ $user->roles->contains($role->id) ? 'checked' : '' }}>
-                                    {{ $role->name }} <br>
-                                    <small class="text-muted">{{ $role->permissions->pluck('name')->implode(', ') }}</small>
-                                </label>
-                            </div>
-                            <p></p>
-                        @endforeach
+                        @include('admin.roles.checkboxes')
 
                         <button class="btn btn-primary btn-block">@lang('Update Roles')</button>
                     </form>
@@ -81,16 +71,7 @@
                     <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
                         @csrf @method('PUT')
 
-                        @foreach ($permissions as $id => $name)
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="permissions[]" id="permissions" value="{{ $id }}" 
-                                        {{ $user->permissions->contains($id) ? 'checked' : '' }}>
-                                    {{ $name }}
-                                </label>
-                            </div>
-                            <p></p>
-                        @endforeach
+                        @include('admin.permissions.checkboxes')
 
                         <button class="btn btn-primary btn-block">@lang('Update Permissions')</button>
                     </form>

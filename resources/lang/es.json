@@ -60,6 +60,7 @@
   "Permissions has been updated": "Los permisos has sido actualizados",
   "View all users": "Ver todos los usuarios",
   "Create new user": "Crear nuevo usuario",
+  "Password will generated and sent to the new user via e-mail": "La contraseña será generada y enviada al nuevo usuario vía email",
   "E-Mail Address": "Correo electrónico",
   "Error": "Error ",
   "Forbidden": "Prohibido",

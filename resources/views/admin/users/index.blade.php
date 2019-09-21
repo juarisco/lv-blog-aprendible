@@ -16,7 +16,9 @@
 <div class="box box-primary">
     <div class="box-header">
         <h3 class="box-title">@lang('Users List')</h3>
-        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> @lang('Create User')</button>
+        <a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">
+            <i class="fa fa-plus"></i> @lang('Create User')
+        </a>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
