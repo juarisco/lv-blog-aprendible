@@ -61,6 +61,8 @@
   "View all users": "Ver todos los usuarios",
   "Create new user": "Crear nuevo usuario",
   "User has been created": "El usuario ha sido creado",
+  "Your credentials to sign in ": "Tus credenciales para acceder a ",
+  "Use these credentials to sign in to app": "Utiliza estas credenciales para acceder al sistema",
   "Password will generated and sent to the new user via e-mail": "La contraseña será generada y enviada al nuevo usuario vía email",
   "E-Mail Address": "Correo electrónico",
   "Error": "Error ",
