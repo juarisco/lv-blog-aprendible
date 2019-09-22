@@ -20,8 +20,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-        // $this->authorize('view', new User);
-
         $users = User::allowed()->get();
 
         return view('admin.users.index')->withUsers($users);
@@ -132,7 +130,9 @@ class UsersController extends Controller
 
         $user->update($request->validated());
 
-        return back()->withFlash(__('User updated'));
+        return redirect()
+            ->route('admin.users.edit', $user)
+            ->withFlash(__('User updated'));
     }
 
     /**
@@ -141,8 +141,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $this->authorize('delete', $user);
+
+        $user->delete();
+
+        return redirect()
+            ->route('admin.users.index')
+            ->withFlash(__('User deleted'));
     }
 }

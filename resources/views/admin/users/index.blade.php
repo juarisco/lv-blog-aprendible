@@ -48,7 +48,7 @@
                             <i class="fa fa-pencil"></i>
                         </a>
 
-                        <form action="{{ route('admin.users.destroy', $user) }}" method="user" style="display: inline">
+                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display: inline">
                             @csrf @method('DELETE')
                             <button 
                                 class="btn btn-xs btn-danger"
