@@ -8,15 +8,9 @@
                     <h3 class="box-title">@lang('Personal data')</h3>
                 </div>
                 <div class="box-body">
-                    @if ($errors->any())
-                        <ul class="list-group">
-                            @foreach ($errors->all() as $error)
-                                <li class="list-group-item list-group-item-danger">
-                                    {{ $error }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
+                    
+                    @include('partials.error-messages')
+
                     <form action="{{ route('admin.users.update', $user) }}" method="post">
                         @csrf @method('PUT')
 
@@ -82,7 +76,7 @@
                         <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
                             @csrf @method('PUT')
 
-                            @include('admin.permissions.checkboxes')
+                            @include('admin.permissions.checkboxes', ['model' => $user])
 
                             <button class="btn btn-primary btn-block">@lang('Update Permissions')</button>
                         </form>
@@ -92,7 +86,6 @@
                                 <li class="list-group-item">{{ $role->name }}</li>
                             @empty
                                 <li class="list-group-item">@lang('Not any permissions')</li>
-
                             @endforelse
                         </ul>
                     @endrole
