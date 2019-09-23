@@ -2,12 +2,12 @@
 
 @section('header')
     <h1>
-        @lang('Roles')
-        <small>@lang('Roles List')</small>
+        @lang('Permissions')
+        <small>@lang('Permissions List')</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> @lang('Home')</a></li>
-        <li class="active">@lang('Roles')</li>
+        <li class="active">@lang('Permissions')</li>
     </ol>
 @endsection
 
@@ -15,45 +15,29 @@
 
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-title">@lang('Roles List')</h3>
-        <a href="{{ route('admin.roles.create') }}" class="btn btn-primary pull-right">
-            <i class="fa fa-plus"></i> @lang('Create Role')
-        </a>
+        <h3 class="box-title">@lang('Permissions List')</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <table id="roles-table" class="table table-bordered table-striped">
+        <table id="permissions-table" class="table table-bordered table-striped">
             <thead>
                 <tr>
                 <th>ID</th>
                 <th>@lang('Identification')</th>
                 <th>@lang('Name')</th>
-                <th>@lang('Permissions')</th>
                 <th>@lang('Actions')</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($roles as $role)
+                @foreach ($permissions as $permission)
                     <tr>
-                        <td>{{ $role->id }}</td>
-                        <td>{{ $role->name }}</td>
-                        <td>{{ $role->display_name }}</td>
-                        <td>{{ $role->permissions->pluck('display_name')->implode(', ') }}</td>
+                        <td>{{ $permission->id }}</td>
+                        <td>{{ $permission->name }}</td>
+                        <td>{{ $permission->display_name }}</td>
                         <td>
-                            <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-xs btn-info">
+                            <a href="{{ route('admin.permissions.edit', $permission) }}" class="btn btn-xs btn-info">
                                 <i class="fa fa-pencil"></i>
                             </a>
-
-                            @if ($role->id !== 1)
-                                <form action="{{ route('admin.roles.destroy', $role) }}" method="POST" style="display: inline">
-                                    @csrf @method('DELETE')
-                                    <button 
-                                        class="btn btn-xs btn-danger"
-                                        onclick="return confirm('{{ __('Are you sure to delete this role?') }}')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </form>
-                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -79,7 +63,7 @@
     <!-- page script -->
     <script>
         $(function () {
-            $('#roles-table').DataTable({
+            $('#permissions-table').DataTable({
                 'paging'      : true,
                 'lengthChange': false,
                 'searching'   : true,
