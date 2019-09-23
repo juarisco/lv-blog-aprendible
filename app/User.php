@@ -57,4 +57,9 @@ class User extends Authenticatable
 
         return $query->where('id', auth()->id());
     }
+
+    public function getRoleDisplayNames()
+    {
+        return $this->roles->pluck('display_name')->implode(', ');
+    }
 }

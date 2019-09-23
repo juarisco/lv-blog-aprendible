@@ -44,7 +44,7 @@ class RolesController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|unique:roles',
-            'guard_name' => 'required',
+            'display_name' => 'required',
         ]);
 
         $role = Role::create($data);
@@ -91,8 +91,8 @@ class RolesController extends Controller
     public function update(Request $request, Role $role)
     {
         $data = $request->validate([
-            'name' => 'required|unique:roles,name,' . $role->id,
-            'guard_name' => 'required',
+            // 'name' => 'required|unique:roles,name,' . $role->id,
+            'display_name' => 'required',
         ]);
 
         $role->update($data);
