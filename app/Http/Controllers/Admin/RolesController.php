@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveRolesRequest;
 use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
@@ -40,14 +41,9 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveRolesRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|unique:roles',
-            'display_name' => 'required',
-        ]);
-
-        $role = Role::create($data);
+        $role = Role::create($request->validated());
 
         if ($request->has('permissions')) {
             $role->givePermissionTo($request->permissions);
@@ -88,14 +84,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(SaveRolesRequest $request, Role $role)
     {
-        $data = $request->validate([
-            // 'name' => 'required|unique:roles,name,' . $role->id,
-            'display_name' => 'required',
-        ]);
-
-        $role->update($data);
+        $role->update($request->validated());
 
         $role->permissions()->detach();
 
