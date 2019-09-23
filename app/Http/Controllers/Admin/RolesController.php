@@ -103,8 +103,18 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        if ($role->id === 1) {
+            throw new \Illuminate\Auth\Access\AuthorizationException(__('This role can not be deleted'));
+        }
+
+        // $this->authorize('delete', $role);
+
+        $role->delete();
+
+        return redirect()
+            ->route('admin.roles.index')
+            ->withFlash(__('Role was deleted'));
     }
 }

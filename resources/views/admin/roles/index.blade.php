@@ -52,7 +52,7 @@
                             @csrf @method('DELETE')
                             <button 
                                 class="btn btn-xs btn-danger"
-                                onclick="return confirm('{{ __('Are you sure to delete this role') }}')">
+                                onclick="return confirm('{{ __('Are you sure to delete this role?') }}')">
                                 <i class="fa fa-times"></i>
                             </button>
                         </form>
