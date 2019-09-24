@@ -72,6 +72,7 @@
   "Role created successfully": "El role fue creado correctamente",
   "Role was updated successfully": "El role fue actualizado correctamente",
   "Permission updated": "Permiso actualizado",
+  "Not any posts yet": "No hay publicaciones todavía",
   "Identification": "Identificador",
   "The role name field is required": "El nombre del role es obligatorio",
   "The role identification field is required": "El identificador del role es obligatorio",
