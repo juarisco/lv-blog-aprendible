@@ -28,7 +28,7 @@
                     @endif
                   </ul>
     
-                  <a href="#" class="btn btn-primary btn-block"><b>@lang('Edit')</b></a>
+                  <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-block"><b>@lang('Edit')</b></a>
                 </div>
                 <!-- /.box-body -->
             </div>

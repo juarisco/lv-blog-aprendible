@@ -20,7 +20,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::allowed()->get();
+        // $users = User::allowed()->get();
+        $users = User::get();
 
         return view('admin.users.index')->withUsers($users);
     }

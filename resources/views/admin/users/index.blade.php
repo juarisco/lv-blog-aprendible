@@ -16,9 +16,11 @@
 <div class="box box-primary">
     <div class="box-header">
         <h3 class="box-title">@lang('Users List')</h3>
-        <a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">
-            <i class="fa fa-plus"></i> @lang('Create User')
-        </a>
+        @can('create', $users->first())
+            <a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">
+                <i class="fa fa-plus"></i> @lang('Create User')
+            </a>
+        @endcan
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -34,30 +36,38 @@
         </thead>
         <tbody>
             @foreach ($users as $user)
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->getRoleNames()->implode(', ') }}</td>
-                    <td>
-                        <a href="{{ route('admin.users.show', $user) }}" 
-                            class="btn btn-xs btn-default">
-                            <i class="fa fa-eye"></i>
-                        </a>
-                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-xs btn-info">
-                            <i class="fa fa-pencil"></i>
-                        </a>
-
-                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display: inline">
-                            @csrf @method('DELETE')
-                            <button 
-                                class="btn btn-xs btn-danger"
-                                onclick="return confirm('{{ __('Are you sure to delete this user') }}')">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
+                @can('view', $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+                        <td>
+                            @can('view', $user)
+                                <a href="{{ route('admin.users.show', $user) }}" 
+                                    class="btn btn-xs btn-default">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            @endcan
+                            @can('update', $user)
+                                <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-xs btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            @endcan
+                            
+                            @can('delete', $user)
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display: inline">
+                                    @csrf @method('DELETE')
+                                    <button 
+                                        class="btn btn-xs btn-danger"
+                                        onclick="return confirm('{{ __('Are you sure to delete this user') }}')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                            @endcan
+                        </td>
+                    </tr>
+                @endcan
             @endforeach
         </tbody>
         {{-- <tfoot>
