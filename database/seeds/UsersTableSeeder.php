@@ -36,6 +36,9 @@ class UsersTableSeeder extends Seeder
         $updateRolesPermission = Permission::create(['name' => 'Update roles', 'display_name' => 'Actuaslizar roles']);
         $deleteRolesPermission = Permission::create(['name' => 'Delete roles', 'display_name' => 'Eliminar roles']);
 
+        $viewPermissionsPermission = Permission::create(['name' => 'View permissions', 'display_name' => 'Ver permisos']);
+        $updatePermissionsPermission = Permission::create(['name' => 'Update permissions', 'display_name' => 'Actualizar permisos']);
+
         // $updateRolesPermission = Permission::create(['name' => 'Update roles']);
 
         $admin = new User;

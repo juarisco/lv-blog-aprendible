@@ -15,41 +15,11 @@ class PermissionsController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', new Permission);
+
         return view('admin.permissions.index', [
             'permissions' => Permission::all(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -60,6 +30,8 @@ class PermissionsController extends Controller
      */
     public function edit(Permission $permission)
     {
+        $this->authorize('update', new Permission);
+
         return view('admin.permissions.edit', [
             'permission' => $permission
         ]);
@@ -74,6 +46,8 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
+        $this->authorize('update', new Permission);
+
         $data = $request->validate(['display_name' => 'required']);
 
         $permission->update($data);
@@ -81,16 +55,5 @@ class PermissionsController extends Controller
         return redirect()
             ->route('admin.permissions.edit', $permission)
             ->withFlash(__('Permission updated'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
