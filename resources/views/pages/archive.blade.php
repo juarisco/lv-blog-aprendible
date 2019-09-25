@@ -37,7 +37,11 @@
                 <h3 class="text-capitalize">posts by month</h3>
                 <ul class="list-unstyled">
                     @foreach ($archive as $date)
-                        <li>{{ $date->month }} {{ $date->year }} ({{ $date->posts }})</li>
+                        <li class="text-capitalize">
+                            <a href="{{ route('pages.home', ['month' => $date->month, 'year' => $date->year]) }}">
+                                {{ $date->monthname }} {{ $date->year }} ({{ $date->posts }})
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
