@@ -36,9 +36,9 @@
                 @endforeach
                 <h3 class="text-capitalize">posts by month</h3>
                 <ul class="list-unstyled">
-                    <li>August 2015</li>
-                    <li>September 2015</li>
-                    <li>October 2015</li>
+                    @foreach ($archive as $date)
+                        <li>{{ $date->month }} {{ $date->year }} ({{ $date->posts }})</li>
+                    @endforeach
                 </ul>
             </div>
         </div>
