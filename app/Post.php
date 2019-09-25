@@ -67,7 +67,8 @@ class Post extends Model
      */
     public function scopePublished($query)
     {
-        return $query->whereNotNull('published_at')
+        return $query->with(['owner', 'category', 'tags', 'photos'])
+            ->whereNotNull('published_at')
             ->where('published_at', '<=', Carbon::now())
             ->latest('published_at');
     }

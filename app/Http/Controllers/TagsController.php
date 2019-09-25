@@ -12,7 +12,7 @@ class TagsController extends Controller
         return view('pages.home
         ', [
             'title' => __('Tags Post') . " '{$tag->name}'",
-            'posts' => $tag->posts()->paginate(1)
+            'posts' => $tag->posts()->published()->paginate(1)
         ]);
     }
 }
