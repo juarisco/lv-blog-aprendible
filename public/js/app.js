@@ -1861,15 +1861,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
   mounted: function mounted() {
-    console.log("Component mounted.");
+    var _this = this;
+
+    axios.get("/api/posts").then(function (res) {
+      _this.posts = res.data.data;
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
 });
 
@@ -2609,32 +2614,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    { staticClass: "posts container" },
+    [
+      _vm._l(_vm.posts, function(post) {
+        return _c("article", { staticClass: "post" }, [
+          _c("div", { staticClass: "content-post" }, [
+            _c("h1", { domProps: { textContent: _vm._s(post.title) } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c("p", { domProps: { innerHTML: _vm._s(post.excerpt) } }),
+            _vm._v(" "),
+            _vm._m(0, true)
+          ])
+        ])
+      }),
+      _vm._v(" "),
+      !_vm.posts.length
+        ? _c("article", { staticClass: "post" }, [_vm._m(1)])
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "posts container" }, [
-        _c("article", { staticClass: "post" }, [
-          _c("div", { staticClass: "content-post" }, [
-            _vm._v("\n        Home\n        "),
-            _c("div", { staticClass: "divider" }),
-            _vm._v(" "),
-            _c("footer", { staticClass: "container-flex space-between" }, [
-              _c("div", { staticClass: "read-more" })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("article", { staticClass: "post" }, [
-          _c("div", { staticClass: "content-post" }, [
-            _c("h1", [_vm._v("@lang('Not any posts yet')")])
-          ])
-        ])
-      ])
+    return _c("footer", { staticClass: "container-flex space-between" }, [
+      _c("div", { staticClass: "read-more" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-post" }, [
+      _c("h1", [_vm._v("Not any posts yet")])
     ])
   }
 ]

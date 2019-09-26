@@ -29,7 +29,10 @@ class PagesController extends Controller
 
         $posts = $query->paginate();
 
-        // return $posts;
+        if (request()->wantsJson()) {
+            return $posts;
+        }
+
 
         return view('pages.home')->withPosts($posts);
     }

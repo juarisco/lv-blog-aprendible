@@ -1,49 +1,55 @@
 <template>
-  <div>
-    <section class="posts container">
-      <!-- @if (isset($title))
+  <section class="posts container">
+    <!-- @if (isset($title))
                         <h3>{{ $title }}</h3>
-      @endif-->
+    @endif-->
 
-      <!-- @forelse ($posts as $post) -->
-      <article class="post">
-        <!-- @include($post->viewType('home')) -->
+    <article v-for="post in posts" class="post">
+      <!-- @include($post->viewType('home')) -->
 
-        <div class="content-post">
-          <!-- @include('posts.header') -->
+      <div class="content-post">
+        <!-- @include('posts.header') -->
 
-          <!-- <h1>{{ $post->title }}</h1> -->
-          Home
-          <div class="divider"></div>
+        <h1 v-text="post.title"></h1>
+        <div class="divider"></div>
 
-          <!-- <p>{{ $post->excerpt }}.</p> -->
+        <p v-html="post.excerpt"></p>
 
-          <footer class="container-flex space-between">
-            <div class="read-more">
-              <!-- <a href="{{ route('posts.show',$post) }}" class="text-uppercase c-green">@lang('read more')</a> -->
-            </div>
+        <footer class="container-flex space-between">
+          <div class="read-more">
+            <!-- <a href="{{ route('posts.show',$post) }}" class="text-uppercase c-green">@lang('read more')</a> -->
+          </div>
 
-            <!-- @include('posts.tags') -->
-          </footer>
-        </div>
-      </article>
-      <!-- @empty -->
-      <article class="post">
-        <div class="content-post">
-          <h1>@lang('Not any posts yet')</h1>
-        </div>
-      </article>
-      <!-- @endforelse -->
-    </section>
-    <!-- fin del div.posts.container -->
-    <!-- {{ $posts->appends(request()->all())->links() }} -->
-  </div>
+          <!-- @include('posts.tags') -->
+        </footer>
+      </div>
+    </article>
+
+    <article class="post" v-if="!posts.length">
+      <div class="content-post">
+        <h1>Not any posts yet</h1>
+      </div>
+    </article>
+  </section>
+  <!-- {{ $posts->appends(request()->all())->links() }} -->
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      posts: []
+    };
+  },
   mounted() {
-    console.log("Component mounted.");
+    axios
+      .get("/api/posts")
+      .then(res => {
+        this.posts = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
