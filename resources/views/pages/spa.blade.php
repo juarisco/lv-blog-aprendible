@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<section class="posts container">
+    <section class="posts container">
         {{-- @if (isset($title))
             <h3>{{ $title }}</h3>
         @endif --}}
@@ -16,6 +16,8 @@
                     {{-- @include('posts.header') --}}
 
                     {{-- <h1>{{ $post->title }}</h1> --}}
+
+                    <router-view></router-view>
 
                     <div class="divider"></div>
 
