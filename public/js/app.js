@@ -1861,6 +1861,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2621,13 +2640,52 @@ var render = function() {
       _vm._l(_vm.posts, function(post) {
         return _c("article", { staticClass: "post" }, [
           _c("div", { staticClass: "content-post" }, [
+            _c("header", { staticClass: "container-flex space-between" }, [
+              _c("div", { staticClass: "date" }, [
+                _c("span", { staticClass: "c-gris" }, [
+                  _vm._v(
+                    _vm._s(post.published_date) +
+                      " / " +
+                      _vm._s(post.owner.name)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "post-category" }, [
+                _c("span", { staticClass: "category" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v(_vm._s(post.category.name))
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
             _c("h1", { domProps: { textContent: _vm._s(post.title) } }),
             _vm._v(" "),
             _c("div", { staticClass: "divider" }),
             _vm._v(" "),
             _c("p", { domProps: { innerHTML: _vm._s(post.excerpt) } }),
             _vm._v(" "),
-            _vm._m(0, true)
+            _c("footer", { staticClass: "container-flex space-between" }, [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "tags container-flex" },
+                _vm._l(post.tags, function(tag) {
+                  return _c(
+                    "span",
+                    { staticClass: "tag c-gris text-capitalize" },
+                    [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v("#" + _vm._s(tag.name))
+                      ])
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
           ])
         ])
       }),
@@ -2644,8 +2702,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "container-flex space-between" }, [
-      _c("div", { staticClass: "read-more" })
+    return _c("div", { staticClass: "read-more" }, [
+      _c("a", { staticClass: "text-uppercase c-green", attrs: { href: "#" } }, [
+        _vm._v("read more")
+      ])
     ])
   },
   function() {

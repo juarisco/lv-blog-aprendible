@@ -8,7 +8,21 @@
       <!-- @include($post->viewType('home')) -->
 
       <div class="content-post">
-        <!-- @include('posts.header') -->
+        <header class="container-flex space-between">
+          <div class="date">
+            <span class="c-gris">{{ post.published_date }} / {{ post.owner.name }}</span>
+          </div>
+          <!-- @if ($post->category) -->
+          <div class="post-category">
+            <span class="category">
+              <!-- <a href="{{ route('categories.show', $post->category) }}"> -->
+              <!-- {{ $post->category->name }} -->
+              <!-- </a> -->
+              <a href="#">{{ post.category.name }}</a>
+            </span>
+          </div>
+          <!-- @endif -->
+        </header>
 
         <h1 v-text="post.title"></h1>
         <div class="divider"></div>
@@ -17,10 +31,15 @@
 
         <footer class="container-flex space-between">
           <div class="read-more">
-            <!-- <a href="{{ route('posts.show',$post) }}" class="text-uppercase c-green">@lang('read more')</a> -->
+            <a href="#" class="text-uppercase c-green">read more</a>
           </div>
 
           <!-- @include('posts.tags') -->
+          <div class="tags container-flex">
+            <span class="tag c-gris text-capitalize" v-for="tag in post.tags">
+              <a href="#">#{{ tag.name }}</a>
+            </span>
+          </div>
         </footer>
       </div>
     </article>
