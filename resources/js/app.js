@@ -10,31 +10,23 @@ let router = new Router({
     routes: [
         {
             path: '/',
-            component: {
-                template: '<div>Este es el home</div>'
-            }
+            component: require('./views/Home').default
         },
         {
             path: '/nosotros',
-            component: {
-                template: '<div>Este es el nosotros</div>'
-            }
+            component: require('./views/About').default
         },
         {
             path: '/archivo',
-            component: {
-                template: '<div>Este es el archivo</div>'
-            }
+            component: require('./views/Archive').default
         },
         {
             path: '/contacto',
-            component: {
-                template: '<div>Este es el contacto</div>'
-            }
-        },
+            component: require('./views/Contact').default
+        }
     ],
-    linkExactActiveClass: 'active',
-});
+    linkExactActiveClass: 'active'
+})
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
