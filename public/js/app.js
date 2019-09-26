@@ -14396,7 +14396,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 //     el: '#app',
 // });
 
-alert('cambio de nuevo');
+alert('cambio');
 
 /***/ }),
 

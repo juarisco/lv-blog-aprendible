@@ -31,4 +31,4 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //     el: '#app',
 // });
 
-alert('cambio de nuevo');
+alert('cambio');

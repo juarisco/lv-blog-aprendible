@@ -12,3 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js');
+
+mix.browserSync({
+    proxy: 'http://blog-aprendible.test',
+    // browser: 'Google chrome'
+    // open: false
+});
+
+mix.disableNotifications();
