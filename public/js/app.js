@@ -17108,7 +17108,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: {
       template: '<div>Este es el contacto</div>'
     }
-  }]
+  }],
+  linkExactActiveClass: 'active'
 }); // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
