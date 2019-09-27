@@ -26,6 +26,11 @@ export default new Router({
             component: require('./views/Contact').default
         },
         {
+            path: '/blog/:url',
+            name: 'posts_show',
+            component: require('./views/PostsShow').default
+        },
+        {
             path: '*',
             component: require('./views/404').default
         }

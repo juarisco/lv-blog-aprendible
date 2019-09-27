@@ -31,7 +31,10 @@
 
         <footer class="container-flex space-between">
           <div class="read-more">
-            <a href="#" class="text-uppercase c-green">read more</a>
+            <router-link
+              :to="{name: 'posts_show', params: {url: post.url}}"
+              class="text-uppercase c-green"
+            >read more</router-link>
           </div>
 
           <!-- @include('posts.tags') -->
