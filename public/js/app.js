@@ -1962,10 +1962,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: {}
+      post: {
+        owner: {},
+        category: {}
+      }
     };
   },
   mounted: function mounted() {
@@ -2869,6 +2888,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "post container" }, [
     _c("div", { staticClass: "content-post" }, [
+      _c("header", { staticClass: "container-flex space-between" }, [
+        _c("div", { staticClass: "date" }, [
+          _c("span", { staticClass: "c-gris" }, [
+            _vm._v(
+              _vm._s(_vm.post.published_date) +
+                " / " +
+                _vm._s(_vm.post.owner.name)
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "post-category" }, [
+          _c("span", { staticClass: "category" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v(_vm._s(_vm.post.category.name))
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
       _vm._v(" "),
       _c("div", { staticClass: "divider" }),
