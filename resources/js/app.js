@@ -4,7 +4,8 @@ require('./bootstrap');
 import Vue from 'vue';
 import router from './routes';
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('post-header', require('./components/PostHeader.vue').default);
+Vue.component('nav-bar', require('./components/NavBar.vue').default);
 
 const app = new Vue({
     el: '#app',

@@ -23,23 +23,10 @@
 		<div class="preload"></div>
 		<header class="space-inter">
 			<div class="container container-flex space-between">
-				<figure class="logo"><img src="/img/logo.png" alt=""></figure>
-				<nav>
-                    <ul class="container-flex space-center list-unstyled">
-                        <li>
-                            <router-link :to="{name: 'home'}" class="text-uppercase">Inicio</router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{name: 'about'}" class="text-uppercase">Nosotros</router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{name: 'archive'}" class="text-uppercase">Archivos</router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{name: 'contact'}" class="text-uppercase">Contacto</router-link>
-                        </li>
-                    </ul>
-                </nav>
+                <figure class="logo"><img src="/img/logo.png" alt=""></figure>
+                
+                <nav-bar></nav-bar>
+                
 			</div>
 		</header>
 		
