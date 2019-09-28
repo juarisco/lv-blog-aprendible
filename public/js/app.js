@@ -1958,6 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["category"],
   data: function data() {
     return {
       posts: []
@@ -1966,7 +1967,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/categories/".concat(this.$route.params.category)).then(function (res) {
+    axios.get("/api/categories/".concat(this.category)).then(function (res) {
       _this.posts = res.data.data;
     })["catch"](function (err) {
       console.log(err);
@@ -2081,6 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["url"],
   data: function data() {
     return {
       post: {
@@ -2092,7 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/blog/".concat(this.$route.params.url)).then(function (res) {
+    axios.get("/api/blog/".concat(this.url)).then(function (res) {
       _this.post = res.data;
     })["catch"](function (err) {
       console.log(err.response.data);
@@ -2116,6 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["tag"],
   data: function data() {
     return {
       posts: []
@@ -2124,12 +2127,34 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/tags/".concat(this.$route.params.tag)).then(function (res) {
+    axios.get("/api/tags/".concat(this.tag)).then(function (res) {
       _this.posts = res.data.data;
     })["catch"](function (err) {
       console.log(err);
     });
-  }
+  } // beforeRouteUpdate(to, from, next) {
+  //   this.tag = to.params.tag;
+  //   this.getPosts();
+  //   next();
+  // },
+  // methods: {
+  //   getPosts() {
+  //     axios
+  //       .get(`/api/tags/${this.tag}`)
+  //       .then(res => {
+  //         this.posts = res.data.data;
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }
+  // watch: {
+  //   tag() {
+  //     this.getPosts();
+  //   }
+  // }
+
 });
 
 /***/ }),
@@ -18666,15 +18691,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   }, {
     path: '/blog/:url',
     name: 'posts_show',
-    component: __webpack_require__(/*! ./views/PostsShow */ "./resources/js/views/PostsShow.vue")["default"]
+    component: __webpack_require__(/*! ./views/PostsShow */ "./resources/js/views/PostsShow.vue")["default"],
+    props: true
   }, {
     path: '/categorias/:category',
     name: 'category_posts',
-    component: __webpack_require__(/*! ./views/CategoryPosts */ "./resources/js/views/CategoryPosts.vue")["default"]
+    component: __webpack_require__(/*! ./views/CategoryPosts */ "./resources/js/views/CategoryPosts.vue")["default"],
+    props: true
   }, {
     path: '/etiquetas/:tag',
     name: 'tags_posts',
-    component: __webpack_require__(/*! ./views/TagsPosts */ "./resources/js/views/TagsPosts.vue")["default"]
+    component: __webpack_require__(/*! ./views/TagsPosts */ "./resources/js/views/TagsPosts.vue")["default"],
+    props: true
   }, {
     path: '*',
     component: __webpack_require__(/*! ./views/404 */ "./resources/js/views/404.vue")["default"]
