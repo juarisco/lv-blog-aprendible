@@ -7,9 +7,7 @@
       <!-- @if ($post->category) -->
       <div class="post-category">
         <span class="category">
-          <router-link
-            :to="{name: 'category_posts', params: {category: post.category.url }}"
-          >{{ post.category.name }}</router-link>
+          <category-link :category="post.category" />
         </span>
       </div>
       <!-- @endif -->
