@@ -13,8 +13,7 @@
 
       <div class="comments">
         <div class="divider"></div>
-        <div id="disqus_thread"></div>
-        <!-- @include('partials.disqus-script') -->
+        <disqus-comments />
       </div>
       <!-- .comments -->
     </div>
