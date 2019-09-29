@@ -9,7 +9,7 @@ class CategoriesController extends Controller
 {
     public function show(Category $category)
     {
-        $posts = $category->posts()->published()->paginate();
+        $posts = $category->posts()->published()->paginate(1);
 
         if (request()->wantsJson()) {
             return $posts;

@@ -4,9 +4,9 @@
                         <h3>{{ $title }}</h3>
     @endif-->
 
-    <posts-list-item v-for="post in posts" :post="post" :key="post.id" />
+    <posts-list-item v-for="post in items" :post="post" :key="post.id" />
 
-    <article class="post" v-if="!posts.length">
+    <article class="post" v-if="!items.length">
       <div class="content-post">
         <h1>Not any posts yet</h1>
       </div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ["posts"]
+  props: ["items"]
 };
 </script>
 

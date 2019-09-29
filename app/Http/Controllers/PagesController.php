@@ -27,7 +27,7 @@ class PagesController extends Controller
             $query->whereYear('published_at', request('year'));
         }
 
-        $posts = $query->paginate();
+        $posts = $query->paginate(3);
 
         if (request()->wantsJson()) {
             return $posts;
