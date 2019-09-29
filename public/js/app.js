@@ -19271,6 +19271,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 
 
 
+ // require('vue2-animate/dist/vue2-animate.min.css')
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('post-header', __webpack_require__(/*! ./components/PostHeader */ "./resources/js/components/PostHeader.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('posts-list', __webpack_require__(/*! ./components/PostsList */ "./resources/js/components/PostsList.vue")["default"]);

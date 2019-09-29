@@ -4,6 +4,8 @@ require('./bootstrap');
 import Vue from 'vue';
 import router from './routes';
 
+// require('vue2-animate/dist/vue2-animate.min.css')
+
 Vue.component('post-header', require('./components/PostHeader').default);
 Vue.component('posts-list', require('./components/PostsList').default);
 Vue.component('posts-list-item', require('./components/PostsListItem').default);

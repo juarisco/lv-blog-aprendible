@@ -30,8 +30,12 @@
 			</div>
 		</header>
 		
-		<!-- Contenido -->
-        <router-view :key="$route.fullPath"></router-view>
+        <!-- Contenido -->
+        <div class="page-wrapper" style="min-height: 100vh">
+            <transition name="slide-fade" mode="out-in">
+                <router-view :key="$route.fullPath"></router-view>
+            </transition>
+        </div>
         
         <section class="footer">
             <footer>
