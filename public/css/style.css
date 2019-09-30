@@ -223,12 +223,15 @@ a.btn-bar{
 	resize: vertical;
 	padding: 25px 0 0 15px; 
 }
-.page-contact .form-contact .send-message a{
+.page-contact .form-contact .send-message button{
 	display: block;
-	text-decoration: none;
     font-weight: bold;
     margin-top: 25px;
-    font-size: 19px;
+	font-size: 19px;
+	border: none;
+	cursor: pointer; 
+	padding:15px 18px;
+	outline:none
 }
 
 .custom-wrapper {
@@ -313,6 +316,13 @@ a.btn-bar{
 .page-wrapper{
 	min-height:100vh;
 }
+
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+  }
 
 .fade-enter-active, .fade-leave-active {
 	transition: opacity .5s;

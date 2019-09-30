@@ -48,5 +48,8 @@ export default new Router({
             component: require('./views/404').default
         }
     ],
-    linkExactActiveClass: 'active'
+    linkExactActiveClass: 'active',
+    scrollBehavior() {
+        return { x: 0, y: 0 }
+    }
 })

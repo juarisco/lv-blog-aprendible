@@ -17,6 +17,7 @@ Vue.component('disqus-comments', require('./components/DisqusComments').default)
 Vue.component('paginator', require('./components/Paginator').default);
 Vue.component('pagination-links', require('./components/PaginationLinks').default);
 Vue.component('social-links', require('./components/SocialLinks').default);
+Vue.component('contact-form', require('./components/ContactForm').default);
 
 const app = new Vue({
     el: '#app',
