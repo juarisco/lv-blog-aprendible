@@ -1769,16 +1769,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.working = true; // axios
-      //   .post("/api/messages", this.form)
-      //   .then(res => {
-      //     this.sent = true;
-      //     this.working = false;
-      //   })
-      //   .catch(errors => {
-      //     this.sent = false;
-      //     this.working = false;
-      //   });
+      var _this = this;
+
+      this.working = true;
+      axios.post("/api/messages", this.form).then(function (res) {
+        _this.sent = true;
+        _this.working = false;
+      })["catch"](function (errors) {
+        _this.sent = false;
+        _this.working = false;
+      });
     }
   }
 });
@@ -20663,6 +20663,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     component: __webpack_require__(/*! ./views/404 */ "./resources/js/views/404.vue")["default"]
   }],
   linkExactActiveClass: 'active',
+  mode: 'history',
   scrollBehavior: function scrollBehavior() {
     return {
       x: 0,

@@ -48,16 +48,16 @@ export default {
   methods: {
     submit() {
       this.working = true;
-      // axios
-      //   .post("/api/messages", this.form)
-      //   .then(res => {
-      //     this.sent = true;
-      //     this.working = false;
-      //   })
-      //   .catch(errors => {
-      //     this.sent = false;
-      //     this.working = false;
-      //   });
+      axios
+        .post("/api/messages", this.form)
+        .then(res => {
+          this.sent = true;
+          this.working = false;
+        })
+        .catch(errors => {
+          this.sent = false;
+          this.working = false;
+        });
     }
   }
 };

@@ -49,6 +49,7 @@ export default new Router({
         }
     ],
     linkExactActiveClass: 'active',
+    mode: 'history',
     scrollBehavior() {
         return { x: 0, y: 0 }
     }

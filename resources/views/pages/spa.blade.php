@@ -44,16 +44,16 @@
                     <nav>
                         <ul class="container-flex space-center list-unstyled">
                             <li>
-                                <a href="{{ route('pages.home') }}" class="text-uppercase c-white">home</a>
+                                <a href="{{-- route('pages.home') --}}" class="text-uppercase c-white">home</a>
                             </li>
                             <li>
-                                <a href="{{ route('pages.about') }}" class="text-uppercase c-white">about</a>
+                                <a href="{{-- route('pages.about') --}}" class="text-uppercase c-white">about</a>
                             </li>
                             <li>
-                                <a href="{{ route('pages.archive') }}" class="text-uppercase c-white">archive</a>
+                                <a href="{{-- route('pages.archive') --}}" class="text-uppercase c-white">archive</a>
                             </li>
                             <li>
-                                <a href="{{ route('pages.contact') }}" class="text-uppercase c-white">contact</a>
+                                <a href="{{-- route('pages.contact') --}}" class="text-uppercase c-white">contact</a>
                             </li>
                         </ul>
                     </nav>
